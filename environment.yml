@@ -1,0 +1,8 @@
+name: /Users/sebastian/Documents/AlbaniaSplit/code/env
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - pandas
+  - pytest
+prefix: /Users/sebastian/Documents/AlbaniaSplit/code/env
