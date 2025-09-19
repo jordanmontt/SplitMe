@@ -1,8 +1,7 @@
-name: /Users/sebastian/Documents/AlbaniaSplit/code/env
+name: splitmeenv
 channels:
   - defaults
 dependencies:
   - python=3.11
   - pandas
   - pytest
-prefix: /Users/sebastian/Documents/AlbaniaSplit/code/env
