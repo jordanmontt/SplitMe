@@ -1,3 +1,6 @@
+from .CurrencyNormalizer import CurrencyNormalizer
+
+
 class Balance:
     def __init__(self, debitor):
         self.debitor = debitor
@@ -20,18 +23,24 @@ class Balance:
         return f"Balance(debitor={self.debitor}, total={self.total_debt():.2f}, creditors={{ {creditors_str} }})"
 
 
-
-
 class Ledger:
-    def __init__(self, expenses):
+    def __init__(self):
+        self.balances = {}
+    
+    def __init__(self, expenses, conversion_table):
         self.expenses = expenses
+        self.conversion_table = conversion_table
         self.balances = {}
 
     def get_balance_of(self, person):
         return self.balances.setdefault(person, Balance(person))
-    
-    
+
+    def normalize_currencies(self):
+        CurrencyNormalizer(self.expenses, self.conversion_table).normalize_currencies()
+
     def compute_balances(self):
+        self.normalize_currencies()
+    
         for expense in self.expenses:
             payer = expense.payer
             share = expense.amount / len(expense.participants)
